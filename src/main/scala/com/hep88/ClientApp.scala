@@ -19,7 +19,7 @@ object Client extends JFXApp {
   greeterMain ! ChatClient.start
 
   val loader = new FXMLLoader(null, NoDependencyResolver)
-  loader.load(getClass.getResourceAsStream("view/MainWindow.fxml"))
+  loader.load(getClass.getResourceAsStream("view/test.fxml"))
   val border: scalafx.scene.layout.BorderPane = loader.getRoot[javafx.scene.layout.BorderPane]()
   val control = loader.getController[com.hep88.view.MainWindowController#Controller]()
   control.chatClientRef = Option(greeterMain)
