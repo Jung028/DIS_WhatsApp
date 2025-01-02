@@ -7,14 +7,16 @@ import scalafx.scene.control.{Label, ListView, TextField}
 import com.hep88.ChatClient
 import com.hep88.User
 import com.hep88.Client
+import javafx.fxml.FXML
 import scalafx.collections.ObservableBuffer
 import scalafx.Includes._
 
 @sfxml
-class MainWindowController(private val txtName: TextField,
-                           private val lblStatus: Label, private val listUser: ListView[User],
-                           private val listMessage: ListView[String],
-                           private val txtMessage: TextField) {
+class MainWindowController(@FXML private val txtName: TextField,
+                           @FXML private val lblStatus: Label,
+                           @FXML private val listUser: ListView[User],
+                           @FXML private val listMessage: ListView[String],
+                           @FXML private val txtMessage: TextField) {
 
     var chatClientRef: Option[ActorRef[ChatClient.Command]] = None
 
@@ -22,14 +24,14 @@ class MainWindowController(private val txtName: TextField,
 
     listMessage.items = receivedText
 
-    def handleJoin(action: ActionEvent): Unit = {
-        if(txtName != null)
-          chatClientRef map((x)=> x ! ChatClient.StartJoin(txtName.text.value))
-    }
+  def handleJoin(action: ActionEvent): Unit = {
+      if(txtName != null)
+        chatClientRef map((x)=> x ! ChatClient.StartJoin(txtName.text.value))
+  }
 
-    def displayStatus(text: String): Unit = {
-        lblStatus.text = text
-    }
+  def displayStatus(text: String): Unit = {
+      lblStatus.text = text
+  }
   def updateList(x: Iterable[User]): Unit ={
     listUser.items = new ObservableBuffer[User]() ++= x
   }

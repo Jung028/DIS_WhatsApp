@@ -1,5 +1,17 @@
-.background {
-    -fx-background-color: #1d1d1d;
+.dark-gray-background {
+    -fx-background-color: #46474A;
+}
+
+.gray-background {
+    -fx-background-color: #636566;
+}
+
+.transparent-background {
+    -fx-background-color: rgba(0, 0, 0, 0);
+}
+
+.radius {
+    -fx-background-radius : 100px;
 }
 
 .label {
